@@ -19,13 +19,13 @@ entries:
 
   - title: category
     entries:
-      - title: c++
+      - title: C++
         post_list:
           category: cpp
           show_more: true
           show_more_text: See more posts...
           show_more_url: cpp-archive.html
-      - title: winAPI
+      - title: WinAPI
         post_list:
           category: winapi
           show_more: true
