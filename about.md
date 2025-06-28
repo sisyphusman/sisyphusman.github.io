@@ -3,6 +3,6 @@ layout: page
 title: About
 ---
 
-This is an example page!
+c++, 자체 게임 엔진, 게임 기획에 관심이 있습니다
 
-It's very similar to a `post` layout, with the only difference that the publish date is not shown!
+사용된 테마 : no style, please!
