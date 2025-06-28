@@ -4,7 +4,7 @@
 entries:
   - title: info
     entries:
-      - title: github repo
+      - title: github
         url: https://github.com/sisyphusman        
       - title: about
         url: about
@@ -25,12 +25,30 @@ entries:
           show_more: true
           show_more_text: See more posts...
           show_more_url: cpp-archive.html
-      - title: WinAPI
+      - title: Computer Science
         post_list:
-          category: winapi
+          category: cs
           show_more: true
           show_more_text: See more posts...
-          show_more_url: winapi-archive.html
+          show_more_url: cs-archive.html
+      - title: Operating System
+        post_list:
+          category: os
+          show_more: true
+          show_more_text: See more posts...
+          show_more_url: os-archive.html
+      - title: Computer Graphics
+        post_list:
+          category: cg
+          show_more: true
+          show_more_text: See more posts...
+          show_more_url: cg-archive.html
+      - title: Game Engine Archtecture
+        post_list:
+          category: gea
+          show_more: true
+          show_more_text: See more posts...
+          show_more_url: gea-archive.html
       - title: etc
         post_list:
           category: etc
