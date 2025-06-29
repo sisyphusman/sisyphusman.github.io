@@ -4,7 +4,7 @@ email: # email of site's author
 url: https://sisyphusman.github.io/ # root address of the site
 baseurl: "" # subpath of the site, e.g. "/blog" (leave it blank "" if you're site shouldn't use a subpath)
 description: > # description of the site (multiple lines allowed)
-  A blog about C++ programming, game engine development, and game design.
+  A blog about C++ programming, game engine development and game design
 
 permalink: /:slug.html
 

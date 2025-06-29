@@ -19,35 +19,35 @@ entries:
 
   - title: category
     entries:
-      - title: C++
+      - title: c++
         post_list:
           category: cpp
           limit: 3
           show_more: true
           show_more_text: See more posts...
           show_more_url: cpp-archive.html
-      - title: Computer Science
+      - title: computer science
         post_list:
           category: cs
           limit: 3
           show_more: true
           show_more_text: See more posts...
           show_more_url: cs-archive.html
-      - title: Operating System
+      - title: operating system
         post_list:
           category: os
           limit: 3
           show_more: true
           show_more_text: See more posts...
           show_more_url: os-archive.html
-      - title: Computer Graphics
+      - title: computer graphics
         post_list:
           category: cg
           limit: 3
           show_more: true
           show_more_text: See more posts...
           show_more_url: cg-archive.html
-      - title: Game Engine Archtecture
+      - title: game engine archtecture
         post_list:
           category: gea
           limit: 3

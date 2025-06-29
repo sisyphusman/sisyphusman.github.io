@@ -1,6 +1,6 @@
 ---
 layout: post
-title: github pages에서 timezone 문제
+title: Github Pages에서 Timezone 문제
 category: etc
 ---
 
