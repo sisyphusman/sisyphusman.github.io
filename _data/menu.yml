@@ -4,8 +4,10 @@
 entries:
   - title: info
     entries:
+      - title: youtube
+        url: https://www.youtube.com/@dohooyi
       - title: github
-        url: https://github.com/sisyphusman        
+        url: https://github.com/sisyphusman
       - title: about
         url: about
 
