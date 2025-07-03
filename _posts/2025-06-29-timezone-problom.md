@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Github Pages에서 Timezone 문제
+title: Github Pages에서 글이 안나오는 문제
 category: etc
 ---
 
@@ -11,6 +11,8 @@ category: etc
 github action에서 빌드 로그를 보면 아래와 같다
 
 ``` Skipping: _posts/2025-06-29-add-verification.md has a future date ```
+
+글의 시간이 미래인 경우 스킵이 된다
 
 _config.yml에 아래와 같이 추가한다
 
