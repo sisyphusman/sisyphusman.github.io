@@ -16,7 +16,7 @@ entries:
     post_list:
       limit: 5
       show_more: true
-      show_more_text: See archive...
+      show_more_text: see archive...
       show_more_url: archive.html
 
   - title: category
@@ -26,42 +26,42 @@ entries:
           category: cpp
           limit: 3
           show_more: true
-          show_more_text: See more posts...
+          show_more_text: see more posts...
           show_more_url: cpp-archive.html
       - title: computer science
         post_list:
           category: cs
           limit: 3
           show_more: true
-          show_more_text: See more posts...
+          show_more_text: see more posts...
           show_more_url: cs-archive.html
       - title: operating system
         post_list:
           category: os
           limit: 3
           show_more: true
-          show_more_text: See more posts...
+          show_more_text: see more posts...
           show_more_url: os-archive.html
       - title: computer graphics
         post_list:
           category: cg
           limit: 3
           show_more: true
-          show_more_text: See more posts...
+          show_more_text: see more posts...
           show_more_url: cg-archive.html
       - title: game engine archtecture
         post_list:
           category: gea
           limit: 3
           show_more: true
-          show_more_text: See more posts...
+          show_more_text: see more posts...
           show_more_url: gea-archive.html
       - title: etc
         post_list:
           category: etc
           limit: 3
           show_more: true
-          show_more_text: See more posts...
+          show_more_text: see more posts...
           show_more_url: etc-archive.html
 
   - title: rss
