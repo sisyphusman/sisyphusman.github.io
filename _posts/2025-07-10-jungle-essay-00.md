@@ -4,7 +4,7 @@ title: 크래프톤 정글 4일 차에 쓰는 잡설
 category: etc
 ---
 
-![정글_용인_캠퍼스](/assets/images/20250710_00.jpg)
+![정글_용인_캠퍼스](/assets/images/jungle-kcrafton.jpg)
 
 01.
 
