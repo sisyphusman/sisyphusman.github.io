@@ -63,6 +63,13 @@ entries:
           show_more: true
           show_more_text: see more posts...
           show_more_url: gea-archive.html
+      - title: problem solving
+        post_list:
+          category: ps
+          limit: 3
+          show_more: true
+          show_more_text: see more posts...
+          show_more_url: ps-archive.html
       - title: etc
         post_list:
           category: etc
