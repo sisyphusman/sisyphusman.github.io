@@ -19,7 +19,7 @@ category: etc
 
 #### Body Font  
 
-1. ![구글_폰트_사이트](/assets/images/google-font-site.jpg)  
+1. ![구글_폰트_사이트](/assets/images/etc/google-font-site.jpg)  
 
 2. https://fonts.google.com/selection/embed 사이트에서 원하는 폰트의 embed 소스를 가져온다  
 
