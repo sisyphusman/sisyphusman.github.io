@@ -18,11 +18,37 @@
 
   <link rel="shortcut icon" type="image/x-icon" href="{{ site.favicon | relative_url }}" />
   <link rel="stylesheet" href="{{ "/assets/css/main.css" | relative_url }}" />
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.css" integrity="sha384-OH8qNTHoMMVNVcKdKewlipV4SErXqccxxlg6HC9Cwjr5oZu2AdBej1TndeCirael" crossorigin="anonymous">
+	
+  <!-- 기본 KaTeX CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.css" integrity="sha384-OH8qNTHoMMVNVcKdKewlipV4SErXqccxxlg6HC9Cwjr5oZu2AdBej1TndeCirael" crossorigin="anonymous">
   
+  <!-- KaTeX JavaScript (렌더링용) -->
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" integrity="..." crossorigin="anonymous"></script>
+  
+  <!-- 자동 수식 감지 및 렌더링 -->
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" integrity="..." crossorigin="anonymous"></script>
+  
+  <!-- KaTeX 자동 렌더링 초기화 코드 -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      renderMathInElement(document.body, {
+        delimiters: [
+          { left: "$$", right: "$$", display: true },
+          { left: "\\[", right: "\\]", display: true },
+          { left: "$", right: "$", display: false },
+          { left: "\\(", right: "\\)", display: false }
+        ]
+      });
+    });
+  </script>
+  
+  <!-- 코드 블록 (예: ```python) 문법 하이라이팅 스타일을 적용 -->
   <link rel="stylesheet" href="{{ "/assets/css/syntax.css" | relative_url }}" />
   
+  <!-- Google Fonts API 서버와 미리 연결하여 폰트 로딩 속도 향상 -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <!-- 실제 폰트 파일(woff2 등)이 위치한 서버에 미리 연결, CORS 포함 -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
 

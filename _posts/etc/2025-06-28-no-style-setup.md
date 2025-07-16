@@ -46,7 +46,63 @@ category: etc
     # do not have a Java counterpart.
     gem "http_parser.rb", "~> 0.6.0", :platforms => [:jruby]
     ``` 
+&nbsp;
 
 8. 터미널에서 bundle exec jekyll serve 입력 후 http://127.0.0.1:4000/ 에서 로컬 테스트  
 9. 자신의 git repository에 push 후 이름을 닉네임.github.io로 설정  
 10. 리포지토리 설정에서 Use your Github Pages website 체크  
+11. 현재 no style 테마의 head.html 설정은 아래와 같다 (수학 수식 사용하려면 아래에 KaTeX 추가)
+
+&nbsp;
+
+```html
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-site-verification" content="Vph6V9TKkxC6bSim3cV6PTrIESWqZGR3rGAHZo3Tj5Q" />
+  <meta name="naver-site-verification" content="37e703f14441d8deba6008e5635033e368c7074b" />
+  
+  <title>
+  </title>
+
+  <link rel="shortcut icon" type="image/x-icon" href="{{ site.favicon | relative_url }}" />
+  <link rel="stylesheet" href="{{ "/assets/css/main.css" | relative_url }}" />
+	
+  <!-- 기본 KaTeX CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.css" integrity="sha384-OH8qNTHoMMVNVcKdKewlipV4SErXqccxxlg6HC9Cwjr5oZu2AdBej1TndeCirael" crossorigin="anonymous">
+  
+  <!-- KaTeX JavaScript (렌더링용) -->
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" integrity="..." crossorigin="anonymous"></script>
+  
+  <!-- 자동 수식 감지 및 렌더링 -->
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" integrity="..." crossorigin="anonymous"></script>
+  
+  <!-- KaTeX 자동 렌더링 초기화 코드 -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      renderMathInElement(document.body, {
+        delimiters: [
+          { left: "$$", right: "$$", display: true },
+          { left: "\\[", right: "\\]", display: true },
+          { left: "$", right: "$", display: false },
+          { left: "\\(", right: "\\)", display: false }
+        ]
+      });
+    });
+  </script>
+  
+  <!-- 코드 블록 (예: ```python) 문법 하이라이팅 스타일을 적용 -->
+  <link rel="stylesheet" href="{{ "/assets/css/syntax.css" | relative_url }}" />
+  
+  <!-- Google Fonts API 서버와 미리 연결하여 폰트 로딩 속도 향상 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <!-- 실제 폰트 파일(woff2 등)이 위치한 서버에 미리 연결, CORS 포함 -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+
+</head>
+
+```
