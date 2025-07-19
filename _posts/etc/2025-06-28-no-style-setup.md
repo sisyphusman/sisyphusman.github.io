@@ -9,8 +9,9 @@ category: etc
 3. gem install bundler  
 4. gem install jekyll  
 5. no style git을 zip으로 받은 후 원하는 위치 압축 풀기  
-6. _config.yml에서 baseurl에 ""으로 설정  
-7. Gemfile은 아래와 같이 설정  
+6. 해당 테마 폴더(Gemfile 위치)에서 bundle install
+7. _config.yml에서 baseurl에 ""으로 설정  
+8. Gemfile은 아래와 같이 설정  
 
     ```
     source "https://rubygems.org"
@@ -48,10 +49,10 @@ category: etc
     ``` 
 &nbsp;
 
-8. 터미널에서 bundle exec jekyll serve 입력 후 http://127.0.0.1:4000/ 에서 로컬 테스트  
-9. 자신의 git repository에 push 후 이름을 닉네임.github.io로 설정  
-10. 리포지토리 설정에서 Use your Github Pages website 체크  
-11. 현재 no style 테마의 head.html 설정은 아래와 같다 (수학 수식 사용하려면 아래에 KaTeX 추가)
+9. 터미널에서 bundle exec jekyll serve 입력 후 http://127.0.0.1:4000/ 에서 로컬 테스트  
+10. 자신의 git repository에 push 후 이름을 닉네임.github.io로 설정  
+11. 리포지토리 설정에서 Use your Github Pages website 체크  
+12. 현재 no style 테마의 head.html 설정은 아래와 같다 (수학 수식 사용하려면 아래에 KaTeX 추가)
 
 &nbsp;
 
