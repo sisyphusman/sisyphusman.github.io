@@ -1,7 +1,7 @@
 ---
 layout: post
 title : 정글 알고리즘 1강
-category: ad
+category: al
 ---
 
 ![Structure and Interpretation of Computer Programs](assets/images/ad/SICP.jpg)

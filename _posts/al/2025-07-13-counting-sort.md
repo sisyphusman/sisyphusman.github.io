@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Counting Sort(계수 정렬, 도수 정렬)[임시]
-category: ad
+title: 계수 정렬, 도수 정렬(Counting Sort)[임시]
+category: al
 ---
 
 ```python

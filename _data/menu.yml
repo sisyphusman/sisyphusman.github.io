@@ -42,13 +42,20 @@ entries:
           show_more: true
           show_more_text: see more posts...
           show_more_url: os-archive.html
-      - title: algorithm & data structure
+      - title: algorithms
         post_list:
-          category: ad
+          category: al
           limit: 3
           show_more: true
           show_more_text: see more posts...
-          show_more_url: ad-archive.html
+          show_more_url: al-archive.html           
+      - title: data structure
+        post_list:
+          category: ds
+          limit: 3
+          show_more: true
+          show_more_text: see more posts...
+          show_more_url: ds-archive.html
       - title: computer graphics
         post_list:
           category: cg

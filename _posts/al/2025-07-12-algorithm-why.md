@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 알고리즘을 배우는 이유 [임시]
-category: ad
+category: al
 ---
 
 ### 알고리즘 Algorithm

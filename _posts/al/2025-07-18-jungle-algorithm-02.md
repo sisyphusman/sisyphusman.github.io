@@ -1,7 +1,7 @@
 ---
 layout: post
 title : 정글 알고리즘 2강
-category: ad
+category: al
 ---
 
 > 아래 내용은 경기대 배상원 교수님의 강의를 가져왔음을 밝힙니다
