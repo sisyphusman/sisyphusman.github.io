@@ -4,7 +4,7 @@ title : 정글 알고리즘 2강
 category: al
 ---
 
-> 아래 내용은 경기대 배상원 교수님의 강의를 가져왔음을 밝힙니다
+> 아래 내용은 경기대 배상원 교수님의 강의에서 가져왔음을 밝힙니다
 
 ![Algorithms](/assets/images/ad/jungle_lecture//alogrithms_03.jpg)
 
