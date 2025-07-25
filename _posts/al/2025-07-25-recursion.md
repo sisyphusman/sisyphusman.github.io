@@ -118,7 +118,8 @@ category: al
         permute(arr[:i] + arr[i+1:], path + [arr[i]])
   ```
   - 트리 재귀(Tree Recursion)  
-  이진과 유사하지만, 구조적으로 트리 탐색처럼 생긴 재귀
+  이진과 유사하지만, 구조적으로 트리 탐색처럼 생긴 재귀  
+  위의 코드는 순열을 만든다
 
   &nbsp;
 
