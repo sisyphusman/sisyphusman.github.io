@@ -57,6 +57,8 @@ category: ds
 
 - **이중 해싱**(Double Hashing) : 두 개의 해시 함수를 이용해 점프의 간격을 조정, Cache hit rate가 Clustering 문제를 가장 잘 해결
 
+&nbsp;
+
 선형 탐사에서는 충돌 시 다음 인덱스를 검사해서 같은 값을 찾는다
 
 하지만 삭제를 할때 그냥 빈 공간으로 두면 안되고 dummy(쓰레기 값)이나 별도의 배열을 두어서
