@@ -57,7 +57,6 @@ category: etc
 &nbsp;
 
 ```html
-
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -65,8 +64,7 @@ category: etc
   <meta name="google-site-verification" content="Vph6V9TKkxC6bSim3cV6PTrIESWqZGR3rGAHZo3Tj5Q" />
   <meta name="naver-site-verification" content="37e703f14441d8deba6008e5635033e368c7074b" />
   
-  <title>
-  </title>
+  <!-- 자동 생성 부분 생략-->
 
   <link rel="shortcut icon" type="image/x-icon" href="{{ site.favicon | relative_url }}" />
   <link rel="stylesheet" href="{{ "/assets/css/main.css" | relative_url }}" />
@@ -75,10 +73,10 @@ category: etc
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.css" integrity="sha384-OH8qNTHoMMVNVcKdKewlipV4SErXqccxxlg6HC9Cwjr5oZu2AdBej1TndeCirael" crossorigin="anonymous">
   
   <!-- KaTeX JavaScript (렌더링용) -->
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" integrity="..." crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8" crossorigin="anonymous"></script>
   
   <!-- 자동 수식 감지 및 렌더링 -->
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" integrity="..." crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
   
   <!-- KaTeX 자동 렌더링 초기화 코드 -->
   <script>
@@ -107,3 +105,5 @@ category: etc
 </head>
 
 ```
+
+integrity 키는 [https://www.srihash.org/](https://www.srihash.org/)에서 생성하였다
