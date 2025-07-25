@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 분할 정복(Divide and Conquer)
+title: 분할 정복(Divide and Conquer) [임시]
 category: al
 ---
 
