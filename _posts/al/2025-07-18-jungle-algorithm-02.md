@@ -229,11 +229,12 @@ Recursion은 특별한 종류의 reduction!
 
 #### Hanoi Tower
 - n개의 Disc와 3개의 Peg (말뚝)
-- 규칙
+
+규칙
 - 한 번에 하나의 disc를 원래의 peg에서 다른 peg을 옮긴다(move 연산)
 - 큰 disc가 작은 disc위에 올라가서는 안된다
 
-- Hanoi Tower 문제
+Hanoi Tower 문제
 - n개의 disc를 peg 1에서 peg 3으로 옮기는 방법
 - 몇 번의 move 연산이 필요한가
 
