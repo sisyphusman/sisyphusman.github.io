@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 위상 정렬(Topological Sort) [임시]
+title: 위상 정렬(Topological Sort)
 category: al
 ---
 
