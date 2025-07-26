@@ -4,7 +4,7 @@ title : 정글 알고리즘 1강
 category: al
 ---
 
-![Structure and Interpretation of Computer Programs](assets/images/ad/SICP.jpg)
+![Structure and Interpretation of Computer Programs](assets/images/al/SICP.jpg)
 
 Structure and Interpretation of Computer Programs (컴퓨터 프로그램의 구조와 해석)   
 내용 중 일부
