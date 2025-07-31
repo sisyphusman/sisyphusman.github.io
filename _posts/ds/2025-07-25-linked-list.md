@@ -4,6 +4,16 @@ title: 연결 리스트(Linked List)
 category: ds
 ---
 
+# Index
+- [단일 연결 리스트](#단일-연결-리스트)
+- [이중 연결 리스트](#이중-연결-리스트)
+- [원형 연결 리스트](#원형-연결-리스트)
+- [코드 리뷰](#코드-리뷰)
+- [시간 복잡도](#시간-복잡도)
+- [C로 보는 단일 연결 리스트](#c로-보는-단일-연결-리스트)
+
+&nbsp;
+
 연결 리스트는 각 원소(node)가 데이터(data)와 함께, 다음 노드의 주소를 저장하는 방식의 자료구조이다
   
 #### 단일 연결 리스트
@@ -168,3 +178,105 @@ head.next = head.next.next
 | **원소 추가/제거**     | O(N) (요소 이동 필요)     | O(1) (포인터만 수정)              |
 | **메모리 배치**        | 연속적 메모리 공간           | 불연속적, 노드마다 동적 할당         |
 | **오버헤드 (메모리)**   | 없음                      | O(N) (포인터 공간 등 추가 비용 발생) |
+
+&nbsp;
+
+#### C로 보는 단일 연결 리스트
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+// 노드 구조체 정의
+typedef struct Node {
+    int data;
+    struct Node* next;
+} Node;
+
+// 새 노드 생성 함수
+Node* createNode(int data) {
+    Node* newNode = (Node*)malloc(sizeof(Node));
+    if (newNode == NULL) {
+        printf("메모리 할당 실패\n");
+        exit(1);
+    }
+    newNode->data = data;
+    newNode->next = NULL;
+    return newNode;
+}
+
+// 리스트 앞에 노드 삽입
+void insertFront(Node** head, int data) {
+    Node* newNode = createNode(data);
+    newNode->next = *head;
+    *head = newNode;
+}
+
+// 특정 값을 가진 노드 삭제
+void deleteNode(Node** head, int key) {
+    Node* temp = *head;
+    Node* prev = NULL;
+
+    // 첫 노드가 삭제 대상인 경우
+    if (temp != NULL && temp->data == key) {
+        *head = temp->next;
+        free(temp);
+        return;
+    }
+
+    // 삭제할 노드 탐색
+    while (temp != NULL && temp->data != key) {
+        prev = temp;
+        temp = temp->next;
+    }
+
+    // 값이 없는 경우
+    if (temp == NULL) return;
+
+    // 노드 삭제
+    prev->next = temp->next;
+    free(temp);
+}
+
+// 리스트 출력
+void printList(Node* head) {
+    Node* current = head;
+    while (current != NULL) {
+        printf("[%d] -> ", current->data);
+        current = current->next;
+    }
+    printf("NULL\n");
+}
+
+// 메모리 해제
+void freeList(Node* head) {
+    Node* current = head;
+    Node* nextNode;
+
+    while (current != NULL) {
+        nextNode = current->next;
+        free(current);
+        current = nextNode;
+    }
+}
+
+// 메인 함수
+int main() {
+    Node* head = NULL;
+
+    insertFront(&head, 10);
+    insertFront(&head, 20);
+    insertFront(&head, 30);
+
+    printf("리스트 상태: ");
+    printList(head); // [30] -> [20] -> [10] -> NULL
+
+    printf("20 삭제 후: ");
+    deleteNode(&head, 20);
+    printList(head); // [30] -> [10] -> NULL
+
+    freeList(head); // 메모리 해제
+    return 0;
+}
+
+```
