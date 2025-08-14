@@ -4,17 +4,13 @@ title: 레드 블랙 트리
 category: ds
 ---
 
-![이진탐색트리](/assets/images/ds/Red-black_tree_0.1.png)
+![이진탐색트리](/assets/images/ds/Red-black_tree_1.png)
 
 - 이진 탐색 트리(BST)의 한 종류
 
 - 스스로 균형 잡는 트리
 
 - BST의 worst case의 단점을 개선
-
-- 모든 노드는 red 혹은 black
-
-트리 속성
 
 - 모든 노드는 red 혹은 black
 
@@ -30,4 +26,35 @@ nil 노드란?
 
 - RB 트리에서 leaf 노드는 nil 노드
 
-- 
+- 모든 nil 노드는 black
+
+Red-Black 트리 속성
+
+- red의 자녀들은 black or red가 연속적으로 존재할 수 없다
+
+- 임의의 노드에서 자손 nil 노드들까지 가는 경로들의 black 수는 같다
+(자기 자신은 카운트 제외)
+
+노드 x의 black height 
+
+- 노드 x에서 임의의 자손 nil 노드까지 내려가는 경로에서 black 수 (자기 자신은 카운트에서 제외)
+
+- RB 트리가 두 자녀가 같은 색을 가질 때 
+부모와 두 자녀의 색을 바꿔줘도 임의의 노드에서 자손 nil 노드들까지 가는 경로들의 black 수는 같다
+
+RB 트리의 군형 잡는 법
+
+- 삽입/삭제 시 노드가 red라면 자녀들은 black, 임의의 노드에서 자손 nil 노드들까지 가는 경로들의 black 수는 같게 하려고 구조를 바꾸다 보면 트리의 군형이 잡히게 된다
+
+
+삽입 시 주의 사항
+
+- 삽입 전 RB 트리 속성 만족한 상태
+
+- 삽입 방식은 일반적인 BST와 동일
+
+- 삽입 후 RB 트리 위반 여부 확인
+
+- RB 트리 속성을 위반했다면 재조정
+
+- RB 트리 속성을 다시 만족
