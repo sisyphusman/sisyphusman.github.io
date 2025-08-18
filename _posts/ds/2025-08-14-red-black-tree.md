@@ -1,16 +1,18 @@
 ---
 layout: post
-title: 레드 블랙 트리
+title: 레드 블랙 트리(Red Black Tree)
 category: ds
 ---
 
-![이진탐색트리](/assets/images/ds/Red-black_tree_1.png)
+![레드블랙트리](/assets/images/ds/Red-black_tree_1.png)
 
 - 이진 탐색 트리(BST)의 한 종류
 
 - 스스로 균형 잡는 트리
 
 - BST의 worst case의 단점을 개선
+  - 일반 BST는 최악의 케이스일때 O(n)
+  - 레드 블랙 트리는 최악의 케이스를 항상 O(log n)
 
 - 모든 노드는 red 혹은 black
 
@@ -29,11 +31,11 @@ nil 노드란?
 - 모든 nil 노드는 black
 
 Red-Black 트리 속성
-
-- red의 자녀들은 black or red가 연속적으로 존재할 수 없다
-
-- 임의의 노드에서 자손 nil 노드들까지 가는 경로들의 black 수는 같다
-(자기 자신은 카운트 제외)
+  1. 모든 노드는 red or black
+  2. 루트 노드는 black
+  3. 모든 nil 노드는 black
+  4. 노드가 red라면 자녀들은 black
+  5. 각 노드에서 자손 nil 노드들까지 가는 모든 경로는 black 수와 같다
 
 노드 x의 black height 
 
@@ -44,17 +46,22 @@ Red-Black 트리 속성
 
 RB 트리의 군형 잡는 법
 
-- 삽입/삭제 시 노드가 red라면 자녀들은 black, 임의의 노드에서 자손 nil 노드들까지 가는 경로들의 black 수는 같게 하려고 구조를 바꾸다 보면 트리의 군형이 잡히게 된다
+- 삽입/삭제 시 노드가 red라면 
+1. 자녀들은 black  
+2. 임의의 노드에서 자손 nil 노드들까지 가는 경로들의 black 수는 같게 하려고 구조를 바꾸다 보면 트리의 군형이 잡히게 된다
 
+RB 트리와 Sentinal
+- nil 노드를 사용하는 것이 Sentinal
+- 혹은 null을 사용
 
-삽입 시 주의 사항
+#### 삽입
 
-- 삽입 전 RB 트리 속성 만족한 상태
+- 마지막에 root node를 black으로 고정
 
-- 삽입 방식은 일반적인 BST와 동일
+- 삽입 하는 노드가 red인 이유는 nil 노드까지 가는 경로의 black 수에 영향을 미치지 않기 때문
 
-- 삽입 후 RB 트리 위반 여부 확인
+- Case 1: 삼촌 RED → 재색 + 위로 올리기
 
-- RB 트리 속성을 위반했다면 재조정
+  Case 2: 삼촌 BLACK + 꺽임(삼각형) → 작은 회전으로 바깥(직선) 만들기
 
-- RB 트리 속성을 다시 만족
+  Case 3: 삼촌 BLACK + 바깥(직선) → 큰 회전 + 재색 
