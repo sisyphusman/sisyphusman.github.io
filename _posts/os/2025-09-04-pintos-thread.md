@@ -9,6 +9,7 @@ category: os
 - [GDB 디버깅](#gdb-디버깅)
 - [vscode에서 디버깅](#vscode에서-디버깅)
 - [GDB 자주 쓰는 명령어 모음](#gdb-자주-쓰는-명령어-모음)
+- [thread 테스트 스크립트 목록](#thread-테스트-스크립트-목록)
 
 # 설명서
 - https://casys-kaist.github.io/pintos-kaist/introduction/getting_started.html
@@ -135,4 +136,32 @@ category: os
    | info threads | 스레드 목록 보기 |
    | thread 2 | 스레드 번호 2로 전환 |
 
+# thread 테스트 스크립트 목록
 
+alarm-single
+alarm-multiple
+alarm-simultaneous
+alarm-priority
+alarm-zero
+alarm-negative
+priority-change
+priority-donate-one
+priority-donate-multiple
+priority-donate-multiple2
+priority-donate-nest
+priority-donate-sema
+priority-donate-lower
+priority-fifo
+priority-preempt
+priority-sema
+priority-condvar
+priority-donate-chain
+mlfqs/mlfqs-load-1
+mlfqs/mlfqs-load-60
+mlfqs/mlfqs-load-avg
+mlfqs/mlfqs-recent-1
+mlfqs/mlfqs-fair-2
+mlfqs/mlfqs-fair-20
+mlfqs/mlfqs-nice-2
+mlfqs/mlfqs-nice-10
+mlfqs/mlfqs-block
