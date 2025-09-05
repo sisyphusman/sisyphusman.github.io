@@ -167,6 +167,7 @@ mlfqs/mlfqs-nice-10
 mlfqs/mlfqs-block  
 
 # main.c
+
 1. bss_init()
   - 커널의 BSS 섹션(초기값 0인 전역/정적 변수 영역)을 0으로 클리어합니다
 2. argv = read_command_line()
@@ -187,24 +188,30 @@ mlfqs/mlfqs-block
 9. intr_init()
   - IDT 구축 및 공통 트랩/예외 핸들러 등록. 마스크/플래그 초기화로 커널이 외부 인터럽트를 받을 준비를 합니다(아직 전역 인터럽트 enable 전).
 10. timer_init()
+  - PIT/APIC 타이머를 설정해 주기적 타이머 인터럽트를 발생시킵니다. 스케줄링 타임 슬라이스와 ticks 카운트의 기반이 됩니다
 11. kbd_init()
+  - 키보드 컨트롤러 초기화 및 IRQ 라우팅 설정
 12. input_init()  
+  - 키보드 등 입력 장치에서 올라오는 스캔코드를 고수준 입력 큐로 전달하는 공용 계층 초기화. 키보드 외 마우스/시리얼 입력을 하나의 링버퍼로 합치는 경우도 있습니다.
 (USERPROG)
 13. thread_start()
+  - 스케줄러를 실제로 시작합니다 타이머 인터럽트를 허용(전역 인터럽트 enable)하고, idle 스레드와 초기 커널 스레드를 준비 리스트에 넣은 뒤 컨텍스트 스위칭을 시작합니다
 14. serial_init_queue()
+  - 시리얼 포트의 송수신 큐(링 버퍼) 초기화. 콘솔과 별개로 UART 기반 I/O를 버퍼링해 끊김 없는 입출력을 제공
 15. timer_calibrate()  
+  - 바쁜 대기 루프에 사용할 “루프/틱” 보정값을 측정합니다 실제 하드웨어 타이머 주기와 비교해 busy_wait() 계열 함수의 정밀도를 맞춥니다
 (FILESYS)  
 (VM)
 16. run_actions(argv)
+  - 커맨드라인으로 지정한 액션을 실행, 실제 과제 채점/테스트는 대부분 여기서 트리거
 17. power_off()
+  - 가상 머신 전원을 끕니다
 18. thread_exit()
+  - 마지막으로 현재 커널 스레드를 종료합니다
 
 # thread.c
 
-1. thread_init()
-2. main()->thread_start()
-3. sema_init(), thread_create()
-4. intr_enable()
-5. sema_down()
-6. ?
-
+1. thread_init() — 스레드 서브시스템(ready 리스트, 초기 스레드 등) 준비
+2. intr_init(), timer_init(), kbd_init(), input_init() … 하드웨어/인터럽트 관련 초기화
+3. thread_start() — 스케줄러 시작 + 내부에서 intr_enable()로 인터럽트 활성화
+4. 이후 테스트/액션에서 thread_create() 등으로 새 스레드들을 만들고 실행
