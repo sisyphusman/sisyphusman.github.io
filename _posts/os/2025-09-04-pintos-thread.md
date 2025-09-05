@@ -138,30 +138,73 @@ category: os
 
 # thread 테스트 스크립트 목록
 
-alarm-single
-alarm-multiple
-alarm-simultaneous
-alarm-priority
-alarm-zero
-alarm-negative
-priority-change
-priority-donate-one
-priority-donate-multiple
-priority-donate-multiple2
-priority-donate-nest
-priority-donate-sema
-priority-donate-lower
-priority-fifo
-priority-preempt
-priority-sema
-priority-condvar
-priority-donate-chain
-mlfqs/mlfqs-load-1
-mlfqs/mlfqs-load-60
-mlfqs/mlfqs-load-avg
-mlfqs/mlfqs-recent-1
-mlfqs/mlfqs-fair-2
-mlfqs/mlfqs-fair-20
-mlfqs/mlfqs-nice-2
-mlfqs/mlfqs-nice-10
-mlfqs/mlfqs-block
+alarm-single  
+alarm-multiple  
+alarm-simultaneous  
+alarm-priority  
+alarm-zero  
+alarm-negative  
+priority-change  
+priority-donate-one  
+priority-donate-multiple  
+priority-donate-multiple2  
+priority-donate-nest  
+priority-donate-sema  
+priority-donate-lower  
+priority-fifo  
+priority-preempt  
+priority-sema  
+priority-condvar  
+priority-donate-chain  
+mlfqs/mlfqs-load-1  
+mlfqs/mlfqs-load-60  
+mlfqs/mlfqs-load-avg  
+mlfqs/mlfqs-recent-1  
+mlfqs/mlfqs-fair-2  
+mlfqs/mlfqs-fair-20  
+mlfqs/mlfqs-nice-2  
+mlfqs/mlfqs-nice-10  
+mlfqs/mlfqs-block  
+
+# main.c
+1. bss_init()
+  - 커널의 BSS 섹션(초기값 0인 전역/정적 변수 영역)을 0으로 클리어합니다
+2. argv = read_command_line()
+  - 부트로더가 넘긴 커맨드라인 문자열을 읽어 공백 단위로 토큰화합니다
+3. argv = parse_options(argv)
+  - 위에서 분해한 토큰들을 파싱해 전역 옵션 플래그를 설정합니다
+4. thread_init()
+  - 현재 실행 중인 컨텍스트를 “커널 스레드”로 구성하고, 스케줄러의 준비 리스트(ready list), thread 구조체 풀, TCB 초기화, 우선순위/타이머 틱 계수 등 스레드 서브시스템의 기초 자료구조를 만듭니다
+5. console_init()
+  - 콘솔(스크린/시리얼) 출력 경합을 막기 위한 콘솔 락을 설정하고 I/O 경로를 준비합니다
+6. mem_end = palloc_init()
+  - 페이지 할당자 초기화. 물리 메모리를 페이지 단위의 프리 비트맵/프리 리스트로 구성해 커널이 “물리 페이지”를 얻고 반납할 수 있게 합니다
+7. malloc_init()
+  - 커널 힙(가변 크기) 할당기 초기화. 내부적으로 페이지 할당자 위에 kmalloc 스타일의 소규모 동적 메모리를 제공합니다
+8. paging_init(mem_end)  
+  - 페이징/가상메모리의 커널 부분을 설정합니다. 커널 주소 공간을 페이지 테이블/페이지 맵 레벨로 구성하고, 커널 코드/데이터/장치 메모리를 매핑하며, CR3 로드 및 페이징 활성화(아키 의존)까지 마무리합니다. 위에서 받은 mem_end를 이용해 올바른 상한선으로 매핑·가드 영역을 잡습니다
+(USERPROG)
+9. intr_init()
+  - IDT 구축 및 공통 트랩/예외 핸들러 등록. 마스크/플래그 초기화로 커널이 외부 인터럽트를 받을 준비를 합니다(아직 전역 인터럽트 enable 전).
+10. timer_init()
+11. kbd_init()
+12. input_init()  
+(USERPROG)
+13. thread_start()
+14. serial_init_queue()
+15. timer_calibrate()  
+(FILESYS)  
+(VM)
+16. run_actions(argv)
+17. power_off()
+18. thread_exit()
+
+# thread.c
+
+1. thread_init()
+2. main()->thread_start()
+3. sema_init(), thread_create()
+4. intr_enable()
+5. sema_down()
+6. ?
+
