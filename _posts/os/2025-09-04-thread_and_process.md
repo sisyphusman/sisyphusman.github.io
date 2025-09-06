@@ -5,7 +5,7 @@ category: os
 ---
 
 1. 프로세스와 스레드
-![프로세스_스레드](/assets/images/os/2025-09-04-thread_and_process.png)
+   ![프로세스_스레드](/assets/images/os/2025-09-04-thread_and_process-01.png)
 
    - 프로세스(Process)
      - 운영체제에서 실행 중인 프로그램의 인스턴스
@@ -18,6 +18,23 @@ category: os
      - RIP(프로그램 카운터), RSP(스택 포인터), RAX/RBX/... 같은 레지스터 값들은 스레드마다 독립적으로 관리
      - 각 스레드는 고유한 Stack을 가짐 -> 독립적인 함수 호출/지역변수 관리 가능
 
+   - 프로세스의 5가지 상태
+     - 생성(create) : 프로세스가 생성되는 중이다
+     - 실행(running) : 프로세스가 프로세서를 차지하여 명령어들이 실행되고 있다
+     - 준비(ready) : 프로세스가 프로세서를 사용하고 있지는 않지만 언제든지 사용할 수 있는 상태로, CPU가 할당되기를 기다리고 있다
+     - 대기(waiting) : 프로세스가 입출력 완료, 시그널 수신 등 어떤 사건을 기다리고 있는 상태를 말한다
+     - 종료(terminated) : 프로세스의 실행이 종료되었다
+
+   - 프로세스의 상태전이
+     - 디스패치(Dispatch) : 프로세스가 준비 상태에서 실행 상태로 전환되었다
+     - 타이머 런아웃(Timer Runout) : 프로세스가 실행 상태에서 준비상태로 전환되었다. 일반적으로 선점 프로세스에서 발생한다
+     - 블록(Block) : 프로세스가 자원 부족, I/O 입출력대기, 인터럽트 등 다른 사유에 의해 실행 상태에서 대기 상태로 전환되었다
+     - 활성화(Wake-up) : 프로세스가 부족한 자원을 재할당 받았다는 등의 사유로 대기 상태에서 준비 상태로 전환되었다
+
+    ![프로세스의 상태전이](/assets/images/os/2025-09-04-thread_and_process-02.png)
+
+   &nbsp;
+
 2. 프로그램과 프로세스 차이
 
    - 프로그램(Program)
@@ -27,6 +44,8 @@ category: os
    - 프로세스(Process)
      - 메모리에 로드되어 실제 CPU에서 실행되는 프로그램 인스턴스
      - 실행 중인 프로그램
+
+   &nbsp;
 
 3. 스레드와 프로세스 차이
 
@@ -38,6 +57,8 @@ category: os
    | 안정성   | 다른 프로세스 오류 영향 X | 같은 프로세스 내 스레드 오류 시 전체에 영향   |
    | 생성 비용 | 크다 (fork 등)     | 작다 (pthread\_create 등)                       |
 
+   &nbsp;
+
 4. 동시성과 병렬성
    - 동시성(Concurrency)
      - 여러 작업이 겉보기에는 동시에 실행되는 것
@@ -48,6 +69,8 @@ category: os
      - 멀티코어, 멀티프로세서 환경에서만 가능
      - 멀티 코어 스레딩, 멀티 프로세싱
 
+   &nbsp;
+
 5. 스레드의 스케줄링
    - 프로세스 내에서 실행되는 여러 스레드에 CPU를 분배하는 방식
    - 운영체제보다 주로 라이브러리(pthread, JVM 등) 수준에서 관리됨
@@ -55,6 +78,8 @@ category: os
      - Round Robin: 순환하며 CPU 할당
      - Priority Scheduling: 우선순위 높은 스레드 먼저 실행
      - Work Stealing: 멀티코어에서 바쁜 스레드가 다른 큐에서 작업 훔치기
+
+   &nbsp;
 
 6. 프로세스의 스케줄링
    - OS 커널이 CPU를 프로세스들에게 분배하는 방식
@@ -65,8 +90,64 @@ category: os
      - Priority Scheduling: 우선순위 기반
      - Multilevel Queue / Feedback Queue: 여러 큐와 피드백을 통한 공정성 확보
 
+   &nbsp;
+
 7. Context Switching 비용
    - 프로세스 전환 시: PCB 저장/복원 + 주소 공간 전환(페이지 테이블 교체) → 비용 큼
      - 페이지 테이블은 가상 주소를 물리 주소로 변환하기 위한 매핑 정보 저장소
      - PCB(Process Control Block): 프로세스 하나하나의 상태를 기록해 두는 자료구조, PCB 저장/복원 = 프로세스의 “스냅샷”을 기록/재현하는 과정
    - 스레드 전환 시: 같은 프로세스라 주소 공간 공유 -> 비용 작음
+
+   &nbsp;
+
+# CPU 스케줄링
+
+   - 선점 스케줄링
+     - 운영체제가 CPU를 강제로 빼앗아서 다른 프로세스에게 넘겨줄 수 있는 방식
+     - 응답 속도가 빨라지고, 모든 프로세스가 공평하게 CPU를 쓸 수 있음
+     - Round Robin, SRTF(Shortest Remaining Time First)
+   - 비선점 스케줄링
+     - CPU를 잡은 프로세스가 스스로 끝낼 때까지 CPU를 계속 쓰는 방식. 운영체제가 중간에 뺏지 않음
+     - 문맥 교환이 적어서 단순하고 효율적임
+     - FCFS(First Come First Serve), SJF(Shortest Job First)
+     
+   &nbsp;
+
+   - 간트 차트
+     - 간트 차트(Gantt chart)는 프로젝트 일정관리를 위한 바 형태의 그래프
+     - ![RR 간트 차트](/assets/images/os/2025-09-04-thread_and_process-03.jpg)
+
+   - 에이징(Aging)
+     - 기다린 만큼 우선순위 높아짐
+     
+   - 기아현상
+     - 우선순위가 낮은 프로세스가 CPU 자원을 계속해서 할당받지 못하고 무한히 대기하는 상황
+
+   &nbsp;
+
+   - FCFS(First Come First Serve, 비선점)
+     - 도착 순서대로 실행
+     - 단순함, 구현 용이, 문맥전환 적음
+     - 기아현상(Starvation) 없음
+     - 쓰이는 곳: 배치 작업, 디스크 I/O 큐의 일부 정책 등 단순·예측 가능한 환경
+  
+   &nbsp;
+
+   - SJF(Shortest Job First, 비선점)
+     - 실행 시간이 가장 짧은 작업부터
+   - SRTF(Shortest Remaining Time First, 선점)
+     - 남은 시간이 가장 짧은 작업을 항상 우선
+   - 쓰이는 곳: 짧은 작업 위주 서버, 빌드 파이프라인의 소작업
+
+   &nbsp;
+
+   - Priority Scheduling (우선순위 스케줄링, 선점/비선점 모두 가능)
+      - 우선순위 수치가 높은 작업을 먼저 실행
+   - Round Robin (선점, 타임 슬라이스)
+      - 고정 시간 할당량(퀀텀) 만큼 돌아가며 실행
+   - Multilevel Queue (MLQ)
+      - 성격이 다른 작업을 여러 고정 큐로 분리하고, 큐 간 우선순위를 둔다
+   - Multilevel Feedback Queue (MLFQ)
+      - 동적으로 우선순위를 조정하는 다단계 큐
+   - Work Stealing (멀티코어 런타임 스케줄링)
+      - 각 코어가 자신의 deque에 작업을 가지고 있고, 할 일이 없어지면 다른 코어의 데크에서 훔쳐온다
