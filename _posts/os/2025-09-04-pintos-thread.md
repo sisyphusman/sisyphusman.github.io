@@ -251,16 +251,65 @@ mlfqs/mlfqs-block
 &nbsp;
 
 # 과제 1. Alarm Clock
-   - timer_sleep(). 에 정의된 것을  다시 구현합니다 devices/timer.c
-   - 작동하는 구현이 제공되지만, "바쁜 대기" 상태입니다. 즉, 현재 시간을 확인하고 충분한 시간이 지날 때까지 호출을 반복합니다 .thread_yield() 
-   - 바쁜 대기를 피하기 위해 다시 구현하세요
+
+   - timer_sleep()에 정의된 것을  다시 구현합니다 devices/timer.c   
+   - 작동하는 구현이 제공되지만, "바쁜 대기" 상태입니다. 즉, 현재 시간을 확인하고 충분한 시간이 지날 때까지 호출을 반복합니다 .thread_yield()   
+   - 바쁜 대기를 피하기 위해 다시 구현하세요  
+   
+   &nbsp;
 
    - include/threads/thread.h
      - 자신이 깨어나야 할 tick을 저장하는 wakeup_tick 변수 추가
+     - void thread_sleep (int64_t ticks); 선언부 추가
+     - void thread_awake (int64_t now_tick); 선언부 추가
    - threads/thread.c
-     - list_init (&sleep_list);						// sleep_list 초기화
-   - devices/timer.c
-       ```c
+     - thread_init() -> list_init (&sleep_list); (sleep_list 초기화)  
+
+     ```c
+      // wakeup_tick 기록 + sleep_list 삽입 + block 처리
+      void thread_sleep (int64_t wakeup_tick)
+      {
+      	struct thread* cur = thread_current();		    							// 현재 스레드를 가져온다
+      	enum intr_level old_level = intr_disable();									// 인터럽트 비활성화
+      	cur->wakeup_tick = wakeup_tick;												      // 계산된 틱을 저장한다
+      
+      	ASSERT(!intr_context());                                    // 인터럽트 핸들러 안에서는 sleep 불가
+      
+      	list_insert_ordered(&sleep_list, &(cur->elem), thread_wakeup_cmp, NULL);	// sleep 리스트에 비교 함수에 따라 새로운 원소를 넣는다
+      
+      	thread_block();											                        // 현재 스레드를 BLOCKED 상태로 전환
+      
+      	intr_set_level(old_level);													        // 인터럽트 활성화
+      }
+            
+      void thread_awake (int64_t now_tick)
+      {
+        enum intr_level old = intr_disable();                                                 // 인터럽트 비활성화 (리스트 조작 보호)
+                          
+        while (!list_empty(&sleep_list))                                                      // sleep_list는 wakeup_tick 오름차순으로 정렬되어 있음
+        {
+          struct thread *t = list_entry(list_front(&sleep_list), struct thread, elem);        // sleep_list 맨 앞 원소 확인
+
+          if (t->wakeup_tick <= now_tick)
+          {
+            list_pop_front(&sleep_list);                                                      // 깨울 시간이 되었으면 리스트에서 제거 후 READY 상태로
+            thread_unblock(t);													                                      // READY로
+          }
+          else
+          {
+            break;																                                            // 맨 앞 스레드조차 아직 깰 시간이 안 되었으면 그 뒤의 스레드들도 전부 아직임 → 루프 종료
+          }
+        }
+
+        intr_set_level(old);                                                                  // 인터럽트 활성화
+      }
+      ```
+
+  &nbsp;
+
+   - devices/timer.c  
+
+        ```c
        /* 대략 ticks 틱 동안 실행을 중단한다. */
         void
         timer_sleep (int64_t ticks) {
@@ -274,9 +323,19 @@ mlfqs/mlfqs-block
           ASSERT (intr_get_level () == INTR_ON);	/* 인터럽트가 켜져 있는지 확인 */
 
           // while (timer_elapsed (start) < ticks)
-          // 	thread_yield ();	/* 원하는 시간이 지날 때까지 CPU를 양보 */
+          // thread_yield ();	/* 원하는 시간이 지날 때까지 CPU를 양보 */
           
-          int64_t wake = start + ticks;						// 언제 깨워야 하는지 계산
-          thread_sleep(wake);									    // wake_tick 값을 기록
+          int64_t wake = start + ticks;						            // 언제 깨워야 하는지 계산
+          thread_sleep(wake);									                // wake_tick 값을 기록
         }
-       ```
+
+      /* 타이머 인터럽트 핸들러 */
+      static void
+      timer_interrupt (struct intr_frame *args UNUSED) {
+        ticks++;
+        thread_tick ();
+        thread_awake(ticks);                                    // 매번 체크함
+      }
+      ```
+
+# 과제 2. 
