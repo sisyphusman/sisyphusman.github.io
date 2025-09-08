@@ -10,6 +10,7 @@ category: os
 - [vscode에서 디버깅](#vscode에서-디버깅)
 - [GDB 자주 쓰는 명령어 모음](#gdb-자주-쓰는-명령어-모음)
 - [thread 테스트 스크립트 목록](#thread-테스트-스크립트-목록)
+- [PintOS 빌드](#pintos-빌드)
 
 &nbsp;
 
@@ -141,6 +142,19 @@ category: os
 
 &nbsp;
 
+#### PintOS 빌드 
+ 
+   - 전체 테스트    
+      pintos/threads/ make check  
+   
+   - 부분 테스트   
+      /threads/build/에서 pintos -- -q run alarm-multiple  
+      -> 에러 여부만 알 수 있음  
+      pintos/threads/build$ make tests/threads/priority-sema.result  
+      -> 이렇게 하면 부분 테스트로 pass/fail까지 알수 있음  
+
+&nbsp;
+
 #### thread 테스트 스크립트 목록
 
 alarm-single  
@@ -170,6 +184,8 @@ mlfqs/mlfqs-fair-20
 mlfqs/mlfqs-nice-2  
 mlfqs/mlfqs-nice-10  
 mlfqs/mlfqs-block  
+
+&nbsp;
 
 #### main.c
 
@@ -214,6 +230,8 @@ mlfqs/mlfqs-block
 18. thread_exit()
   - 마지막으로 현재 커널 스레드를 종료합니다
 
+&nbsp;
+
 #### thread.c
 
 1. thread_init() — 스레드 서브시스템(ready 리스트, 초기 스레드 등) 준비
@@ -222,7 +240,6 @@ mlfqs/mlfqs-block
 4. 이후 테스트/액션에서 thread_create() 등으로 새 스레드들을 만들고 실행
 
 &nbsp;
-
 
 #### timer.c
 
