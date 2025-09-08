@@ -11,7 +11,10 @@ category: os
 - [GDB 자주 쓰는 명령어 모음](#gdb-자주-쓰는-명령어-모음)
 - [thread 테스트 스크립트 목록](#thread-테스트-스크립트-목록)
 
+&nbsp;
+
 # 설명서
+- https://pkuflyingpig.gitbook.io/pintos
 - https://casys-kaist.github.io/pintos-kaist/introduction/getting_started.html
 - source ./activate 에서 source 는 쉘 내장 명령어로 주어진 스크립트 파일을 현재 쉘 환경에서 실행
 
@@ -136,7 +139,9 @@ category: os
    | info threads | 스레드 목록 보기 |
    | thread 2 | 스레드 번호 2로 전환 |
 
-# thread 테스트 스크립트 목록
+&nbsp;
+
+#### thread 테스트 스크립트 목록
 
 alarm-single  
 alarm-multiple  
@@ -166,7 +171,7 @@ mlfqs/mlfqs-nice-2
 mlfqs/mlfqs-nice-10  
 mlfqs/mlfqs-block  
 
-# main.c
+#### main.c
 
 1. bss_init()
   - 커널의 BSS 섹션(초기값 0인 전역/정적 변수 영역)을 0으로 클리어합니다
@@ -209,9 +214,52 @@ mlfqs/mlfqs-block
 18. thread_exit()
   - 마지막으로 현재 커널 스레드를 종료합니다
 
-# thread.c
+#### thread.c
 
 1. thread_init() — 스레드 서브시스템(ready 리스트, 초기 스레드 등) 준비
 2. intr_init(), timer_init(), kbd_init(), input_init() … 하드웨어/인터럽트 관련 초기화
 3. thread_start() — 스케줄러 시작 + 내부에서 intr_enable()로 인터럽트 활성화
 4. 이후 테스트/액션에서 thread_create() 등으로 새 스레드들을 만들고 실행
+
+&nbsp;
+
+
+#### timer.c
+
+1. 하드웨어 타이머 초기화 - timer_init()
+2. 전역 틱 카운터 관리 - 부팅 이후로 몇 틱이 지났는지를 기록하는 전역 변수 ticks
+3. 스레드 깨어나기 관리
+4. 보조 기능 제공
+
+&nbsp;
+
+# 과제 1. Alarm Clock
+   - timer_sleep(). 에 정의된 것을  다시 구현합니다 devices/timer.c
+   - 작동하는 구현이 제공되지만, "바쁜 대기" 상태입니다. 즉, 현재 시간을 확인하고 충분한 시간이 지날 때까지 호출을 반복합니다 .thread_yield() 
+   - 바쁜 대기를 피하기 위해 다시 구현하세요
+
+   - include/threads/thread.h
+     - 자신이 깨어나야 할 tick을 저장하는 wakeup_tick 변수 추가
+   - threads/thread.c
+     - list_init (&sleep_list);						// sleep_list 초기화
+   - devices/timer.c
+       ```c
+       /* 대략 ticks 틱 동안 실행을 중단한다. */
+        void
+        timer_sleep (int64_t ticks) {
+          if (ticks < 0)
+          {
+            return;
+          }
+
+          int64_t start = timer_ticks ();	/* 현재 시간(틱 수)을 저장 */
+
+          ASSERT (intr_get_level () == INTR_ON);	/* 인터럽트가 켜져 있는지 확인 */
+
+          // while (timer_elapsed (start) < ticks)
+          // 	thread_yield ();	/* 원하는 시간이 지날 때까지 CPU를 양보 */
+          
+          int64_t wake = start + ticks;						// 언제 깨워야 하는지 계산
+          thread_sleep(wake);									    // wake_tick 값을 기록
+        }
+       ```
