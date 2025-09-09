@@ -349,6 +349,10 @@ mlfqs/mlfqs-block
       }
       ```
 
+# 설명
+
+&nbsp;
+
 busy wait 방식을 제거하고 sleep queue에 들어가도록 하고,  
 특정 시간이 지나면 다시 실행될 수 있도록 ready queue에 들어가도록 구현한다  
 timer_sleep() 호출한 쓰레드를 wait queue에 push한다  
