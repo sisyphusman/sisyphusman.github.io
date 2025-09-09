@@ -349,9 +349,9 @@ mlfqs/mlfqs-block
       }
       ```
 
-# 설명
-
 &nbsp;
+
+# 설명
 
 busy wait 방식을 제거하고 sleep queue에 들어가도록 하고,  
 특정 시간이 지나면 다시 실행될 수 있도록 ready queue에 들어가도록 구현한다  
