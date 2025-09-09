@@ -349,4 +349,33 @@ mlfqs/mlfqs-block
       }
       ```
 
-# 과제 2. 
+busy wait 방식을 제거하고 sleep queue에 들어가도록 하고,  
+특정 시간이 지나면 다시 실행될 수 있도록 ready queue에 들어가도록 구현한다  
+timer_sleep() 호출한 쓰레드를 wait queue에 push한다  
+매 tick마다 깨어날 스레드가 있는지 검사해서 wait queue에서 pop한다  
+
+&nbsp;
+
+각  스레드가 sleep 되는 경우, 어느 tick까지 sleep 하는에 대한 정보를 저장한다 
+이 정보를 struct thread에 추가한다  
+ 
+&nbsp;
+
+wait queue는 ready list와 똑같이 linked list로 구현한다  
+이 리스트에 저장되는 element는 struct thread의 waitelem이다  
+
+&nbsp;
+
+timer_sleep() 함수는 깨어날 틱을 계산해서 thread_sleep()으로 넘겨준다  
+thread_sleep() 함수는 인터럽트를 끄고 현재 스레드를 가져와서 깨어날 틱을 스레드의 멤버 변수 값으로 넣는다  
+그리고 sleep_list에 틱 오름차순으로 정렬해서 넣고 스레드를 블록한다  
+인터럽트를 다시 복구한다  
+ 
+&nbsp;
+
+깨울 때 thread_unblock()가 처리. 직접 ready 리스트에 건드리지 않음  
+
+&nbsp;
+
+# 과제 2. Priority Scheduling and Donation
+
