@@ -266,6 +266,17 @@ mlfqs/mlfqs-block
      - thread_init() -> list_init (&sleep_list); (sleep_list 초기화)  
 
      ```c
+
+      // 앞이 뒤보다 작으면 true
+      bool thread_wakeup_cmp(const struct list_elem *a, const struct list_elem *b, void *aux UNUSED)
+      {
+        const struct thread *x = list_entry(a, struct thread, elem);
+        const struct thread *y = list_entry(b, struct thread, elem);
+        
+        return x->wakeup_tick < y->wakeup_tick;
+
+      }
+      
       // wakeup_tick 기록 + sleep_list 삽입 + block 처리
       void thread_sleep (int64_t wakeup_tick)
       {
