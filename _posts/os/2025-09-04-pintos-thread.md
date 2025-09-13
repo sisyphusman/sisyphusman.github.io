@@ -33,6 +33,13 @@ category: os
 
 &nbsp;
 
+셋팅  
+- sudo dos2unix activate
+- source ./activate
+- /workspaces/pintos_22.04_lab_docker/pintos/utils$ sudo dos2unix pintos
+
+&nbsp;
+
 # GDB 디버깅
 
 1. sudo apt install gdb
@@ -381,5 +388,31 @@ thread_sleep() 함수는 인터럽트를 끄고 현재 스레드를 가져와서
 
 &nbsp;
 
-# 과제 2. Priority Scheduling and Donation
+# 과제 2. Priority Scheduling
 
+ - include/threads/thread.h  
+     - bool thread_prio_cmp (const struct list_elem *a, const struct list_elem *b, void *aux UNUSED);  
+     - void max_priority();
+ - threads/thread.c
+
+    ```c
+    tid_t
+    thread_create (const char *name, int priority,
+		thread_func *function, void *aux)
+    {
+
+    ...
+    
+      if (t->priority > thread_current()->priority)  
+      {  
+        thread_yield();  
+      }  
+    
+    ...
+
+    }
+    
+    ```
+
+
+# 과제 3. Priority Scheduling and Synchronization
