@@ -17,12 +17,20 @@ category: os
 # 설명서
 - https://pkuflyingpig.gitbook.io/pintos
 - https://casys-kaist.github.io/pintos-kaist/introduction/getting_started.html
-- source ./activate 에서 source 는 쉘 내장 명령어로 주어진 스크립트 파일을 현재 쉘 환경에서 실행
+- https://www.youtube.com/watch?v=RbsE0EQ9_dY&list=PLmQBKYly8OsWiRYGn1wvjwAdbuNWOBJNf&ab_channel=EE415%3AIntro.toOperatingSystem
 
 &nbsp;
 
-전체 테스트 = make check  
-개별 테스트 = /threads/build에서 pintos -- -q run alarm-multiple
+# 참고한 사이트
+- https://oslab.kaist.ac.kr/pintosslides/?ref=maxlevsnail.com
+- https://velog.io/@ceusun0815/Pintos-KAIST-Project-1-Alarm-Clock
+- https://woonys.tistory.com/tag/Pintos
+
+&nbsp;
+
+전체 테스트 = make check    
+개별 테스트 = /threads/build에서 pintos -- -q run alarm-multiple   
+source ./activate 에서 source 는 쉘 내장 명령어로 주어진 스크립트 파일을 현재 쉘 환경에서 실행   
 
 &nbsp;
 
@@ -37,6 +45,7 @@ category: os
 - sudo dos2unix activate
 - source ./activate
 - /workspaces/pintos_22.04_lab_docker/pintos/utils$ sudo dos2unix pintos
+- /workspaces/pintos_22.04_lab_docker/pintos/utils$ sudo dos2unix pintos-mkdisk
 
 &nbsp;
 
