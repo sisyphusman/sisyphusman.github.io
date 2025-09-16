@@ -9,8 +9,11 @@ Pintos 과제 2: User Program의 목표는 커널 위에서 사용자 프로그�
 &nbsp;
 
 명령어
-- pintos --fs-disk=10 -p tests/userprog/args-single:args-single -- -q -f run 'args-single onearg'
-- pintos --gdb --fs-disk=10 -p tests/userprog/args-single:args-single -- -q -f run 'args-single onearg'
+```
+pintos --fs-disk=10 -p tests/userprog/args-single:args-single -- -q -f run 'args-single onearg'
+
+pintos --gdb --fs-disk=10 -p tests/userprog/args-single:args-single -- -q -f run 'args-single onearg'
+```
 
 &nbsp;
 
