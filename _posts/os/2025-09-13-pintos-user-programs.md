@@ -13,7 +13,9 @@ Pintos 과제 2: User Program의 목표는 커널 위에서 사용자 프로그�
 pintos --fs-disk=10 -p tests/userprog/args-single:args-single -- -q -f run 'args-single onearg'
 
 pintos --gdb --fs-disk=10 -p tests/userprog/args-single:args-single -- -q -f run 'args-single onearg'
-```
+```  
+
+os.dsk cannot be temporal 에러 -> make를 안해서 dsk 파일이 없을때 생기는 오류
 
 &nbsp;
 
