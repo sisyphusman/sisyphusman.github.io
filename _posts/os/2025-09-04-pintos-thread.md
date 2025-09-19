@@ -28,12 +28,6 @@ category: os
 
 &nbsp;
 
-전체 테스트 = make check    
-개별 테스트 = /threads/build에서 pintos -- -q run alarm-multiple   
-source ./activate 에서 source 는 쉘 내장 명령어로 주어진 스크립트 파일을 현재 쉘 환경에서 실행   
-
-&nbsp;
-
 도커 실행시 윈도우에서 CRLF 문제 해결법
 - sudo apt-get update
 - sudo apt-get install dos2unix
@@ -168,6 +162,8 @@ source ./activate 에서 source 는 쉘 내장 명령어로 주어진 스크립�
       -> 에러 여부만 알 수 있음  
       pintos/threads/build$ make tests/threads/priority-sema.result  
       -> 이렇게 하면 부분 테스트로 pass/fail까지 알수 있음  
+
+   - source ./activate 에서 source 는 쉘 내장 명령어로 주어진 스크립트 파일을 현재 쉘 환경에서 실행   
 
 &nbsp;
 
