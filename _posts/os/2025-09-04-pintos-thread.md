@@ -167,38 +167,6 @@ category: os
 
 &nbsp;
 
-#### thread 테스트 스크립트 목록
-
-alarm-single  
-alarm-multiple  
-alarm-simultaneous  
-alarm-priority  
-alarm-zero  
-alarm-negative  
-priority-change  
-priority-donate-one  
-priority-donate-multiple  
-priority-donate-multiple2  
-priority-donate-nest  
-priority-donate-sema  
-priority-donate-lower  
-priority-fifo  
-priority-preempt  
-priority-sema  
-priority-condvar  
-priority-donate-chain  
-mlfqs/mlfqs-load-1  
-mlfqs/mlfqs-load-60  
-mlfqs/mlfqs-load-avg  
-mlfqs/mlfqs-recent-1  
-mlfqs/mlfqs-fair-2  
-mlfqs/mlfqs-fair-20  
-mlfqs/mlfqs-nice-2  
-mlfqs/mlfqs-nice-10  
-mlfqs/mlfqs-block  
-
-&nbsp;
-
 #### main.c
 
 1. bss_init()

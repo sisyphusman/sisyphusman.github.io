@@ -15,7 +15,26 @@ pintos --fs-disk=10 -p tests/userprog/args-single:args-single -- -q -f run 'args
 pintos --gdb --fs-disk=10 -p tests/userprog/args-single:args-single -- -q -f run 'args-single onearg'
 ```  
 
-os.dsk cannot be temporal 에러 -> make를 안해서 dsk 파일이 없을때 생기는 오류
+  - os.dsk cannot be temporal 에러 -> make를 안해서 dsk 파일이 없을때 생기는 오류  
+
+&nbsp;
+
+명령어 설명  
+
+```
+pintos --gdb --fs-disk=10 -p tests/userprog/create-exists:create-exists -- -q -f run create-exists
+```
+  - pintos --gdb : Pintos는 QEMU를 실행시키고 그 위에서 OS를 구동합니다. QEMU를 GDB stub 모드로 실행
+  - --fs-disk=10 : 파일 시스템 디스크의 크기를 10MB로 설정
+  - -p SRC:DEST 형식 : 
+     - SRC = 호스트(리눅스) 쪽 경로: tests/userprog/create-exists
+     - DEST = Pintos 가상 파일시스템 안의 파일 이름: create-exists
+  - -q -f run create-exists
+     - -q → 테스트 끝나면 Pintos 자동 종료
+     - -f → 실행 시작 시 파일시스템 포맷
+     - run create-exists
+        - run = Pintos 커널이 지원하는 액션
+        - create-exists = 앞서 -p로 올린 실행 파일을 가상 파일시스템에서 실행
 
 &nbsp;
 
@@ -31,72 +50,3 @@ os.dsk cannot be temporal 에러 -> make를 안해서 dsk 파일이 없을때 �
 
 1. file_name 문자열을 토큰으로 나누어 첫 번째 토큰만 filesys_open() 에 넘기도록 수정
   - 밖에서 파싱하고, load() 에는 실행파일 이름만 넘기는 게 정석
-
-
-#### 테스트 스크립트 목록
-
-```
-tests/userprog/args-none
-tests/userprog/args-single
-tests/userprog/args-multiple
-tests/userprog/args-many
-tests/userprog/args-dbl-space
-tests/userprog/halt
-tests/userprog/exit
-tests/userprog/create-normal
-tests/userprog/create-empty
-tests/userprog/create-null
-tests/userprog/create-bad-ptr
-tests/userprog/create-long
-tests/userprog/create-exists
-tests/userprog/create-bound
-tests/userprog/open-normal
-tests/userprog/open-missing
-tests/userprog/open-boundary
-tests/userprog/open-empty
-tests/userprog/open-null
-tests/userprog/open-bad-ptr
-tests/userprog/open-twice
-tests/userprog/close-normal
-tests/userprog/close-twice
-tests/userprog/close-bad-fd
-tests/userprog/read-normal
-tests/userprog/read-bad-ptr
-tests/userprog/read-boundary
-tests/userprog/read-zero
-tests/userprog/read-stdout
-tests/userprog/read-bad-fd
-tests/userprog/write-normal
-tests/userprog/write-bad-ptr
-tests/userprog/write-boundary
-tests/userprog/write-zero
-tests/userprog/write-stdin
-tests/userprog/write-bad-fd
-tests/userprog/fork-once
-tests/userprog/fork-multiple
-tests/userprog/fork-recursive
-tests/userprog/fork-read
-tests/userprog/fork-close
-tests/userprog/fork-boundary
-tests/userprog/exec-once
-tests/userprog/exec-arg
-tests/userprog/exec-boundary
-tests/userprog/exec-missing
-tests/userprog/exec-bad-ptr
-tests/userprog/exec-read
-tests/userprog/wait-simple
-tests/userprog/wait-twice
-tests/userprog/wait-killed
-tests/userprog/wait-bad-pid
-tests/userprog/multi-recurse
-tests/userprog/multi-child-fd
-tests/userprog/rox-simple
-tests/userprog/rox-child
-tests/userprog/rox-multichild
-tests/userprog/bad-read
-tests/userprog/bad-write
-tests/userprog/bad-read2
-tests/userprog/bad-write2
-tests/userprog/bad-jump
-tests/userprog/bad-jump2
-```
