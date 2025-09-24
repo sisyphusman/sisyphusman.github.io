@@ -35,7 +35,7 @@ category: os
 
 &nbsp;
 
-셋팅  
+세팅   
 - sudo dos2unix activate
 - source ./activate
 - /workspaces/pintos_22.04_lab_docker/pintos/utils$ sudo dos2unix pintos
@@ -158,9 +158,9 @@ category: os
       pintos/threads/ make check  
    
    - 부분 테스트   
-      /threads/build/에서 pintos -- -q run alarm-multiple  
+      pintos/threads/build/에서 pintos -- -q run alarm-multiple  
       -> 에러 여부만 알 수 있음  
-      pintos/threads/build$ make tests/threads/priority-sema.result  
+      pintos/threads/build/ make tests/threads/priority-sema.result  
       -> 이렇게 하면 부분 테스트로 pass/fail까지 알수 있음  
 
    - source ./activate 에서 source 는 쉘 내장 명령어로 주어진 스크립트 파일을 현재 쉘 환경에서 실행   
