@@ -10,9 +10,11 @@ Pintos 과제 2: User Program의 목표는 커널 위에서 사용자 프로그�
 
 명령어
 ```
-pintos --fs-disk=10 -p tests/userprog/args-single:args-single -- -q -f run 'args-single onearg'
+make tests/userprog/read-normal.result VERBOSE=1
 
-pintos --gdb --fs-disk=10 -p tests/userprog/args-single:args-single -- -q -f run 'args-single onearg'
+pintos --gdb --fs-disk=10 -p tests/userprog/exec-boundary:exec-boundary -- -q -f run exec-boundary tests/userprog/exec-boundary
+
+pintos --gdb -v -k -T 60 -m 20   --fs-disk=10 -p tests/userprog/fork-once:fork-once -- -q   -f run fork-once
 ```  
 
   - os.dsk cannot be temporal 에러 -> make를 안해서 dsk 파일이 없을때 생기는 오류  
@@ -46,7 +48,11 @@ pintos --gdb --fs-disk=10 -p tests/userprog/create-exists:create-exists -- -q -f
 
 &nbsp;
 
-구현
+#### Argument Passing
+
+- call -> 스택에 “돌아올 주소” push + 함수 시작으로 점프  
+- ret -> 스택에서 “돌아올 주소” pop + 그 주소로 점프  
+- rip -> CPU가 “지금/다음에 실행할 명령어” 주소를 저장하는 레지스터  
 
 1. file_name 문자열을 토큰으로 나누어 첫 번째 토큰만 filesys_open() 에 넘기도록 수정
-  - 밖에서 파싱하고, load() 에는 실행파일 이름만 넘기는 게 정석
+  - 밖에서 파싱하고, load() 에는 실행파일 이름만 넘기는 게 정석      
