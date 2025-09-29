@@ -106,4 +106,8 @@ category: etc
 
 ```
 
-integrity 키는 [https://www.srihash.org/](https://www.srihash.org/)에서 생성하였다
+integrity 키는 [https://www.srihash.org/](https://www.srihash.org/)에서 생성함
+
+&nbsp;
+
+편집기는 vscode와 Markdown All in One 확장 프로그램을 사용함
