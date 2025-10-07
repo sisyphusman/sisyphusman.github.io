@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 정글 9기 나만무
+title: 정글 - 9기 나만무
 category: etc
 ---
 
