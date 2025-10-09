@@ -17,6 +17,7 @@ category: os
 # 설명서
 - https://pkuflyingpig.gitbook.io/pintos
 - https://casys-kaist.github.io/pintos-kaist/introduction/getting_started.html
+- https://github.com/remzi-arpacidusseau/ostep-translations/tree/master/korean
 - https://www.youtube.com/watch?v=RbsE0EQ9_dY&list=PLmQBKYly8OsWiRYGn1wvjwAdbuNWOBJNf&ab_channel=EE415%3AIntro.toOperatingSystem
 
 &nbsp;
