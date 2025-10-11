@@ -15,17 +15,11 @@ category: os
 &nbsp;
 
 # 설명서
-- https://pkuflyingpig.gitbook.io/pintos
-- https://casys-kaist.github.io/pintos-kaist/introduction/getting_started.html
-- https://github.com/remzi-arpacidusseau/ostep-translations/tree/master/korean
-- https://www.youtube.com/watch?v=RbsE0EQ9_dY&list=PLmQBKYly8OsWiRYGn1wvjwAdbuNWOBJNf&ab_channel=EE415%3AIntro.toOperatingSystem
-
-&nbsp;
-
-# 참고한 사이트
-- https://oslab.kaist.ac.kr/pintosslides/?ref=maxlevsnail.com
-- https://velog.io/@ceusun0815/Pintos-KAIST-Project-1-Alarm-Clock
-- https://woonys.tistory.com/tag/Pintos
+- 스탠퍼드 대학교: [https://web.stanford.edu/class/cs140/projects/pintos/pintos.html](https://web.stanford.edu/class/cs140/projects/pintos/pintos.html)
+- 베이징 대학교: [https://pkuflyingpig.gitbook.io/pintos](https://pkuflyingpig.gitbook.io/pintos)
+- 카이스트 대학교: [https://casys-kaist.github.io/pintos-kaist/introduction/getting_started.html](https://casys-kaist.github.io/pintos-kaist/introduction/getting_started.html), [https://oslab.kaist.ac.kr/pintosslides/?ref=maxlevsnail.com](https://oslab.kaist.ac.kr/pintosslides/?ref=maxlevsnail.com)
+- OSTEP 번역: [https://github.com/remzi-arpacidusseau/ostep-translations/tree/master/korean](https://github.com/remzi-arpacidusseau/ostep-translations/tree/master/korean)
+- Pintos 유튜브 설명: [https://www.youtube.com/watch?v=RbsE0EQ9_dY&list=PLmQBKYly8OsWiRYGn1wvjwAdbuNWOBJNf&ab_channel=EE415%3AIntro.toOperatingSystem](https://www.youtube.com/watch?v=RbsE0EQ9_dY&list=PLmQBKYly8OsWiRYGn1wvjwAdbuNWOBJNf&ab_channel=EE415%3AIntro.toOperatingSystem)
 
 &nbsp;
 
@@ -156,12 +150,12 @@ category: os
 #### PintOS 빌드 
  
    - 전체 테스트    
-      pintos/threads/ make check  
+      pintos/threads/에서 make check  
    
    - 부분 테스트   
       pintos/threads/build/에서 pintos -- -q run alarm-multiple  
       -> 에러 여부만 알 수 있음  
-      pintos/threads/build/ make tests/threads/priority-sema.result  
+      pintos/threads/build/에서 make tests/threads/priority-sema.result  
       -> 이렇게 하면 부분 테스트로 pass/fail까지 알수 있음  
 
    - source ./activate 에서 source 는 쉘 내장 명령어로 주어진 스크립트 파일을 현재 쉘 환경에서 실행   
