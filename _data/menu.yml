@@ -5,9 +5,11 @@ entries:
   - title: info
     entries:
       - title: youtube
-        url: https://www.youtube.com/@dohooyi
+        url: https://www.youtube.com/@dowoo7
       - title: github
         url: https://github.com/sisyphusman
+      - title: velog
+        url: https://velog.io/@sisyphusman
       - title: about
         url: about
 
