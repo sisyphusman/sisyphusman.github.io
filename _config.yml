@@ -1,5 +1,5 @@
-title: Dohooyi blog # name of the site
-author: Dohooyi # name of site's author
+title: Dowoo's blog # name of the site
+author: Dowoo # name of site's author
 email: # email of site's author
 url: https://sisyphusman.github.io # root address of the site
 baseurl: "" # subpath of the site, e.g. "/blog" (leave it blank "" if you're site shouldn't use a subpath)
